@@ -3,7 +3,7 @@
 ![Project Status](https://img.shields.io/badge/status-Finalized-brightgreen)
 ![Tech Stack](https://img.shields.io/badge/tech-dbt%20|%20Python%20|%20PostgreSQL-blue)
 
-This project simulates a real-world data platform for an e-commerce company starting its digital operations. It is designed to ingest, transform, and analyze data from multiple sources to generate actionable business insights.
+This project simulates a real-world data platform for an e-commerce company starting its digital operations. It is designed to ingest, transform, and analyze data from multiple sources stored in AWS S3, generating actionable business insights.
 
 ## Project Goals
 - Analyze sales and customer data
@@ -14,14 +14,14 @@ This project simulates a real-world data platform for an e-commerce company star
 ## Data Platform Structure
 The project follows a **bronze → silver → gold** approach in dbt:
 
-- **Bronze Layer:** Raw tables ingested from source systems, including products, customers, sales, and competitor prices.
+- **Bronze Layer:** Raw tables ingested from CSV and Parquet files stored in AWS S3, including products, customers, sales, and competitor prices.
 - **Silver Layer:** Cleaned and integrated tables for analysis and reporting.
 - **Gold Layer:** Aggregated metrics and KPIs for decision-making (e.g., top products, sales by channel, pricing competitiveness).
 
 ## Tech Stack
-- **Python (Pandas):** For data processing and analysis.
+- **Python (Pandas):** Used only for ingestion of data from S3 into the database.
 - **PostgreSQL (Supabase):** Database for storing and querying raw and transformed data.
-- **dbt:** For data transformations, testing, and documentation of models.
+- **dbt:** For all transformations, testing, and documentation of models.
 
 ## Project Features
 - Sources are defined in `_sources.yml` under the `models` directory.
