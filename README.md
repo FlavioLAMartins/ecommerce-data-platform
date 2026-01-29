@@ -38,7 +38,6 @@ Os usuários podem interagir com o bot para obter **insights em tempo real** a p
 ### Workflow do n8n
 ![Workflow n8n](docs/images/n8n_workflow.png)
 
-### Bot Telegram em Ação
 <h3>Bot Telegram em Ação</h3>
 <img src="docs/images/telegram_bot.gif" alt="Bot Telegram" width="400">
 
