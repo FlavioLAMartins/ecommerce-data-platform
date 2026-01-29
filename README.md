@@ -1,39 +1,50 @@
-# Ecommerce Data Platform
+# Plataforma de Dados E-commerce
 
-![Project Status](https://img.shields.io/badge/status-Finalized-brightgreen)
+![Status do Projeto](https://img.shields.io/badge/status-Finalizado-brightgreen)
 ![Tech Stack](https://img.shields.io/badge/tech-dbt%20|%20Python%20|%20PostgreSQL-blue)
 
-This project simulates a real-world data platform for an e-commerce company starting its digital operations. It is designed to ingest, transform, and analyze data from multiple sources stored in AWS S3, generating actionable business insights.
+Este projeto simula uma **plataforma de dados real para uma empresa de e-commerce**, com ingestão, transformação e análise de dados de múltiplas fontes armazenadas no **AWS S3**. O objetivo é gerar **insights acionáveis** para tomada de decisão.
 
-## Project Goals
-- Analyze sales and customer data
-- Compare product prices with the market
-- Generate data-driven insights for business decisions
-- Provide a structured and scalable data transformation pipeline
+## Objetivos do Projeto
+- Analisar dados de vendas e clientes
+- Comparar preços de produtos com o mercado
+- Gerar insights baseados em dados para decisões de negócio
+- Criar um pipeline estruturado e escalável de transformação de dados
 
-## Data Platform Structure
-The project follows a **bronze → silver → gold** approach in dbt:
+## Estrutura da Plataforma de Dados
+O projeto segue a abordagem **bronze → silver → gold** no dbt:
 
-- **Bronze Layer:** Raw tables ingested from CSV and Parquet files stored in AWS S3, including products, customers, sales, and competitor prices.
-- **Silver Layer:** Cleaned and integrated tables for analysis and reporting.
-- **Gold Layer:** Aggregated metrics and KPIs for decision-making (e.g., top products, sales by channel, pricing competitiveness).
+- **Bronze:** Tabelas brutas provenientes de arquivos CSV e Parquet no S3 (produtos, clientes, vendas e preços de concorrentes).  
+- **Silver:** Tabelas limpas e integradas, prontas para análise e relatórios.  
+- **Gold:** Métricas agregadas e KPIs para tomada de decisão (ex.: clientes top, vendas por canal, competitividade de preços).
 
-## Tech Stack
-- **Python (Pandas):** Used only for ingestion of data from S3 into the database.
-- **PostgreSQL (Supabase):** Database for storing and querying raw and transformed data.
-- **dbt:** For all transformations, testing, and documentation of models.
+## Stack Tecnológica
+- **Python (Pandas):** usado apenas para ingestão de dados do S3 para o banco.  
+- **PostgreSQL (Supabase):** banco de dados para armazenar e consultar os dados brutos e transformados.  
+- **dbt:** para todas as transformações, testes e documentação dos modelos.  
 
-## Project Features
-- Sources are defined in `_sources.yml` under the `models` directory.
-- Models are organized by layer (bronze, silver, gold) for incremental transformations.
-- Includes detailed column descriptions and table documentation to support dbt docs.
-- Ready for further improvements such as seeds, snapshots, and custom macros.
+## Funcionalidades do Projeto
+- Fontes definidas em `_sources.yml` dentro do diretório `models`.  
+- Modelos organizados por camada (**bronze, silver, gold**) para transformações incrementais.  
+- Documentação detalhada das colunas e tabelas para suporte ao `dbt docs`.  
+- Preparado para melhorias futuras: seeds, snapshots e macros customizadas.
 
-## How to Use
-1. Connect dbt Cloud to your repository.
-2. Configure the environment to your database (PostgreSQL or other supported).
-3. Run the pipeline in order: `bronze → silver → gold`.
-4. Use `dbt docs generate` and `dbt docs serve` to explore documentation.
+## Integração & Automação
+- As tabelas da camada **gold** alimentam um **bot no Telegram** que responde perguntas usando um agente de IA.  
+- A ingestão das respostas é feita via **n8n**, conectando PostgreSQL (Supabase) ao bot.  
+- Os usuários podem interagir com o bot para obter **insights em tempo real** a partir da tabela `gold_kpi_clientes_top_rows`.
 
-## Project Status
-✅ Finalized
+### Workflow do n8n
+![Workflow n8n](docs/images/n8n_workflow.png)
+
+### Bot Telegram em Ação
+![Bot Telegram](docs/images/telegram_bot.gif)
+
+## Como Usar
+1. Conecte o **dbt Cloud** ao seu repositório.  
+2. Configure o ambiente com o banco de dados (PostgreSQL ou outro suportado).  
+3. Execute o pipeline na ordem: `bronze → silver → gold`.  
+4. Utilize `dbt docs generate` e `dbt docs serve` para explorar a documentação.
+
+## Status do Projeto
+✅ Finalizado
