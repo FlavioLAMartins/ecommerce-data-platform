@@ -30,15 +30,17 @@ O projeto segue a abordagem **bronze → silver → gold** no dbt:
 - Preparado para melhorias futuras: seeds, snapshots e macros customizadas.
 
 ## Integração & Automação
-- As tabelas da camada **gold** alimentam um **bot no Telegram** que responde perguntas usando um agente de IA.  
-- A ingestão das respostas é feita via **n8n**, conectando PostgreSQL (Supabase) ao bot.  
-- Os usuários podem interagir com o bot para obter **insights em tempo real** a partir da tabela `gold_kpi_clientes_top_rows`.
+
+As tabelas da camada **gold** alimentam um **bot no Telegram** que responde perguntas usando um agente de IA.  
+A ingestão das respostas é feita via **n8n**, conectando PostgreSQL (Supabase) ao bot.  
+Os usuários podem interagir com o bot para obter **insights em tempo real** a partir da tabela `gold_kpi_clientes_top_rows`.
 
 ### Workflow do n8n
 ![Workflow n8n](docs/images/n8n_workflow.png)
 
 ### Bot Telegram em Ação
-![Bot Telegram](docs/images/telegram_bot.gif)
+<h3>Bot Telegram em Ação</h3>
+<img src="docs/images/telegram_bot.gif" alt="Bot Telegram" width="400">
 
 ## Como Usar
 1. Conecte o **dbt Cloud** ao seu repositório.  
